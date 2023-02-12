@@ -45,7 +45,7 @@ public class SobrecargaAcciones implements Serializable {
      * @param col columna
      */
     public void calculoTabla(int row, int col) {
-        log.error(".calculoTabla Falta sobrecargar {} {}" , row , col);        
+        log.info("Falta sobrecargar {} {}" , row , col);        
     }
 
     /**

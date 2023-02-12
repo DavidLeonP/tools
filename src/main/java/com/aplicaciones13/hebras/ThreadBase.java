@@ -23,7 +23,7 @@ public class ThreadBase extends Thread {
     @Override
     public synchronized void run() {
         if (getMensaje() != null) {
-            log.warn(".run() mensaje: {}", mensaje);
+            log.warn("mensaje: {}", mensaje);
         }
         documentListenerBean.accionExtra();
         if (isParar()) {
