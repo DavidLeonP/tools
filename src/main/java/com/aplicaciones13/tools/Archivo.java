@@ -5,11 +5,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  *
  * @author omargo33@hotmail.com.
  *
  */
+@Slf4j
 public class Archivo {
 
     private final String pathArchivoBase;
@@ -36,7 +39,7 @@ public class Archivo {
             canalEntrada.close();
             return new String(bt);
         } catch (IOException e) {
-            LogTemp.escribir(e);
+            log.error(e.toString());
         }
         return "";
     }
@@ -53,7 +56,7 @@ public class Archivo {
             canalSalida.write(b);
             canalSalida.close();
         } catch (IOException e) {
-            LogTemp.escribir(e);
+            log.error(e.toString());
         }
     }
 

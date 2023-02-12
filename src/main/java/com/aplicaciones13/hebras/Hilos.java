@@ -1,7 +1,9 @@
 package com.aplicaciones13.hebras;
 
 import com.aplicaciones13.comun.SobrecargaAcciones;
-import com.aplicaciones13.tools.LogTemp;
+
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,6 +15,7 @@ import java.util.concurrent.Executors;
  * @author omargo33@hotmail.com.
  *
  */
+@Slf4j
 public class Hilos {
 
     private int cantidadHilos = 1;
@@ -32,7 +35,7 @@ public class Hilos {
      * @param objeto
      */
     public void procesar(Object objeto) {
-        LogTemp.escribir(this.getClass().getName(), ".procesar() metodo a sobrecargar", objeto);
+        log.info(".procesar() metodo a sobrecargar {}", objeto);
     }
 
     /**

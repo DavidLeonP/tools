@@ -1,8 +1,9 @@
 package com.aplicaciones13.comun;
 
-import com.aplicaciones13.tools.LogTemp;
 import java.io.Serializable;
 import java.sql.SQLException;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Objeto para poder sobrecargar la forma de actuar de los mentods de conexion a
@@ -11,6 +12,7 @@ import java.sql.SQLException;
  * @author omargo33@hotmail.com
  *
  */
+@Slf4j
 public class SobrecargaAcciones implements Serializable {
 
     @SuppressWarnings("compatibility:-2104704226177752196")
@@ -43,7 +45,7 @@ public class SobrecargaAcciones implements Serializable {
      * @param col columna
      */
     public void calculoTabla(int row, int col) {
-        LogTemp.escribir(this.getClass().getName(), ".calculoTabla Falta sobrecargar ", row + col);
+        log.error(".calculoTabla Falta sobrecargar {} {}" , row , col);        
     }
 
     /**
