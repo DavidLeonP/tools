@@ -72,7 +72,7 @@ public class Archivo {
      * @return
      */
     public static String creaDirectorio(String pathBase, String producto, String accion, String nombreArchivo) {        
-        DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
         String directorioFecha = formatter.format(LocalDate.now());
         String path = pathBase + producto + separador + accion + separador + directorioFecha;
         File stockDir = new File(path);
