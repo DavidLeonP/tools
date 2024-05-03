@@ -1,7 +1,9 @@
 package com.aplicaciones13.hebras;
 
 import com.aplicaciones13.comun.SobrecargaAcciones;
-import com.aplicaciones13.tools.LogTemp;
+
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,10 +11,10 @@ import java.util.concurrent.Executors;
 /**
  * Objeto para crear un hilo de ejecucion y su respectivo procesamiento.
  * 
- *
- * @author omargo33@hotmail.com.
+ * @author omargo33@hotmail.com 
  *
  */
+@Slf4j
 public class Hilos {
 
     private int cantidadHilos = 1;
@@ -32,7 +34,7 @@ public class Hilos {
      * @param objeto
      */
     public void procesar(Object objeto) {
-        LogTemp.escribir(this.getClass().getName(), ".procesar() metodo a sobrecargar", objeto);
+        log.info("Falta sobrecargar {}", objeto);
     }
 
     /**
@@ -43,14 +45,13 @@ public class Hilos {
      *
      * @param lista
      */
-    public void ejecutarLista(List lista) {
+    public void ejecutarLista(List<Object> lista) {
         int resultado = lista.size() / getCantidadHilos();
         int cociente = lista.size() % getCantidadHilos();
         int inicioLista = 0;
         int finLista = resultado + cociente;
 
-        executor
-                = Executors.newFixedThreadPool((resultado == 0) ? 1 : getCantidadHilos());
+        executor = Executors.newFixedThreadPool((resultado == 0) ? 1 : getCantidadHilos());
 
         while (inicioLista <= lista.size()) {
             agregarCola(lista.subList(inicioLista, finLista));

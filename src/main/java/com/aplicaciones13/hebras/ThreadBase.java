@@ -1,7 +1,8 @@
 package com.aplicaciones13.hebras;
 
 import com.aplicaciones13.comun.SobrecargaAcciones;
-import com.aplicaciones13.tools.LogTemp;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Objeto para hacer que deteminados objetos se lancen como un proceso back ground, ayuda con la
@@ -10,6 +11,7 @@ import com.aplicaciones13.tools.LogTemp;
  * @author omargo33@hotmail.com
  *
  */
+@Slf4j
 public class ThreadBase extends Thread {
     private boolean parar;
     private String mensaje;
@@ -21,7 +23,7 @@ public class ThreadBase extends Thread {
     @Override
     public synchronized void run() {
         if (getMensaje() != null) {
-            LogTemp.escribir(this.getClass().getName(), ".run() mensaje:", mensaje);
+            log.warn("mensaje: {}", mensaje);
         }
         documentListenerBean.accionExtra();
         if (isParar()) {
@@ -34,7 +36,7 @@ public class ThreadBase extends Thread {
      *
      */
     private void parada() {
-        this.stop();
+        this.stop();        
     }
 
     /**
